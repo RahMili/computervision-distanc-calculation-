@@ -12,13 +12,15 @@ def region_of_interest(img, vertices):
     return masked_image
 
 def distance(x, y):
+    print("Distance :",height, width)
     x0=width/2
     y0=height
     dist=math.sqrt((x-x0)*(x-x0)+(y-y0)*(y-y0))
+    print("dist:",dist)
     return dist
 
 def compare(dis):
-    if (dis<600):
+    if (dis<height/10):
         print("the object is too near")
         frequency = 2500  # Set Frequency To 2500 Hertz
         duration = 50 
@@ -47,7 +49,7 @@ print(frames_count, fps, width, height)
 
 sub = cv2.createBackgroundSubtractorMOG2()  # create background subtractor
 ret, frame = cap.read()  # import image
-ratio = 0.6  # resize ratio
+ratio = 1.5  # resize ratio
 image = cv2.resize(frame, (0, 0), None, ratio, ratio)  # resize image
 width2, height2, channels = image.shape
 
